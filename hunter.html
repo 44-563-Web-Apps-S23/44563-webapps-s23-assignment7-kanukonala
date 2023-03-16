@@ -56,52 +56,118 @@
    <p id="instructions">Click on the bushes to search for the mouse, beware the cat</p> 
    <p  id="bushes">Number of bushes checked is zero.</p>
    <p id="penalty">Penalty is zero.</p>
-   <p id="chelp">Click for help.</p>
+   <p id="chelp" onclick="help()">Click for help.</p>
    <p id="help">Help report</p>
    <div class="container">
     <div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic01" onclick="check(0)" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic02" onclick="check(1)" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic03" onclick="check(2)" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic04" onclick="check(3)" width="150" height="150"></div>
         
     </div>
     <div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic05" onclick="check(4)" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic06" onclick="check(5)" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic07" onclick="check(6)" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic08" onclick="check(7)" width="150" height="150"></div>
         
     </div>
     <div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic09" onclick="check(8)" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic10" onclick="check(9)" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic11" onclick="check(10)" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic12" onclick="check(11)" width="150" height="150"></div>
         
     </div>
     <div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic13" onclick="check(12)" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic14" onclick="check(13)" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic15" onclick="check(14)" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic16" onclick="check(15)" width="150" height="150"></div>
         
     </div>
     <div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic17" onclick="check(16)" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic18" onclick="check(17)" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic19" onclick="check(18)" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic20" onclick="check(19)" width="150" height="150"></div>
         
     </div>
     <div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
-        <div class="search-location"><img src="bush.jpg" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic21" onclick="check(20)" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic22" onclick="check(21)" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic23" onclick="check(22)" width="150" height="150"></div>
+        <div class="search-location"><img src="bush.jpg" id="pic24" onclick="check(23)" width="150" height="150"></div>
         
     </div>
    </div>
+   <script>
+    const ids = ["pic01", "pic02", "pic03", "pic04", "pic05", "pic06", "pic07", "pic08", "pic09", "pic10", "pic11", "pic12", "pic13", "pic14", "pic15", "pic16", "pic17", "pic18", "pic19", "pic20", "pic21", "pic22", "pic23", "pic24"]
+    var checkCount = 0
+    var lastCheck = 0
+    var penalty = 0
+    var mouseLocation = 13
+    var catLocation = 21
+    var gameOver = false
+
+    function check(p) {
+        console.log('in fun' + p);
+        console.log('ids[p] fun' + ids[p]);
+        var imid = ids[p];
+        console.log('gameOver', gameOver);
+        if (!gameOver) {
+
+            var imv = document.getElementById(imid);
+            if (p == 21) {
+                document.getElementById(imid).src = "tiger.jpg";
+                gameOver = true;
+                penalty = penalty + 4;
+            }
+            else if (p == 13) {
+                document.getElementById(imid).src = "mouse.jpg";
+                gameOver = true;
+                penalty = penalty - 3;
+
+            } else {
+                document.getElementById(imid).src = "grass.jpg";
+            }
+            checkCount = checkCount + 1;
+            penalty = penalty + 1;
+            document.getElementById("bushes").innerHTML = 'Number of bushes checked is ' + checkCount;
+
+            lastCheck = p;
+            document.getElementById("penalty").innerHTML = 'Penalty is ' + penalty;
+        }
+    }
+
+    function help() {
+        let pr = Math.floor(lastCheck / 4) - 1
+        let pc = lastCheck % 6
+        let pcr = Math.floor(catLocation / 4) - 1
+        let pcc = catLocation % 6
+        let pmr = Math.floor(mouseLocation / 4) - 1
+        let pmc = mouseLocation % 6
+        let pcro = Math.abs(pcr - pr);
+        let pcco = Math.abs(pcc - pc);
+        let pmro = Math.abs(pmr - pr);
+        let pmco = Math.abs(pmc - pc);
+
+        if (pcro <= 1 && pcco <= 1) {
+            document.getElementById("help").innerHTML = "meow"
+        }
+        else if (pmro <= 1 && pmco <= 1) {
+            document.getElementById("help").innerHTML = "squeak"
+        }
+        else {
+            document.getElementById("help").innerHTML = "sorry, no help available"
+        }
+
+        penalty += 2
+        document.getElementById("penalty").innerHTML = "Penalty is " + penalty
+    }
+
+</script>
    
 </body>
 </html>

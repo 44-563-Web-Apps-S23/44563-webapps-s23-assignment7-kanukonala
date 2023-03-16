@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Delayq page</title>
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            background-color: red;
+        }
+
+        .flex-container>div {
+            /iv children of the flex container/
+            background-color: #f1f1f1;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 600px) {
+            .flex-container {
+                flex-direction: column;
+                background-color: green;
+            }
+        }
+
+        .btn {
+            box-sizing: 100px;
+            color: white;
+            background-color: rgb(247, 225, 28);
+            padding: 2px 2px;
+            margin: 2px;
+            height: 40px;
+            border: 3px solid black;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2> Yagna Venkata Teja Kanukonala builds a delaying queue</h2>
+    <label for="input">Enter the name of item here: </label>
+    <input type="text" id="input">
+    <div class="flex-container" id="target">
+        <div class="delayQ">row item 1</div>
+        <div class="delayQ">row item 2</div>
+        <div class="delayQ">row item 3</div>
+    </div>
+
+    <p> Press the button mf and create a new element of type div and then add it to the container.
+    </p>
+    <button class="btn" onclick="makeNewDiv()">Add Value</button>
+    <br>
+    <input class="btn" type="button" value="Get" onclick="get()">
+    <input class="btn" type="button" value="Delay" onclick="delay()">
+    <input class="btn" type="button" value="Promote" onclick="promote()">
+    <script>
+        function makeNewDiv() {
+            let ele = document.createElement("div")
+            let newEle = document.getElementById("input").value
+            ele.innerHTML = newEle
+            ele.className = "delayQ"
+            ele.style.color = "orange"
+
+            let container = document.getElementById('target')
+            container.appendChild(ele)
+        }
+        function get() {
+            let queueItem = document.getElementsByClassName("delayQ")
+            console.log(queueItem)
+            let length_ele = queueItem.length
+            if (length_ele > 0) {
+                queueItem[length_ele - 1].remove()
+            }
+        }
+        function delay() {
+            let queueItem = document.getElementsByClassName("delayQ")
+            let length_ele = queueItem.length
+            if (length_ele == 0 || length_ele == 1) {
+                console.log("Not enough elements to delay")
+            } else {
+                let removedItem = queueItem[length_ele - 1]
+                queueItem[length_ele - 1].remove()
+                console.log(removedItem)
+                let container_div = document.getElementById("target")
+                container_div.insertBefore(removedItem, container_div.firstChild)
+            }
+        }
+        function promote() {
+            let queueItem = document.getElementsByClassName("delayQ")
+            let length_ele = queueItem.length
+            let num = Math.floor(Math.random() * length_ele)
+            let randNum = queueItem[num]
+            randNum.parentNode.insertBefore(randNum, randNum.parentNode.firstChild)
+        }
+    </script>
+</body>
+
+</html>
